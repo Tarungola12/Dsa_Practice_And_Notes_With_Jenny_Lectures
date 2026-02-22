@@ -1,8 +1,5 @@
 package BinaryTree;
-import java.util.ArrayDeque;
-import java.util.LinkedList;
-import java.util.Queue;
-import java.util.Scanner;
+import java.util.*;
 
 public class Lec6 {
 
@@ -115,9 +112,47 @@ class BinaryTree {
 
 
     public static void preOrderTraversalUsingIterative(Node root) {
-        for(;root!= null;){
-
+        Stack<Node> stack = new Stack<>();
+        while(root!=null||!stack.isEmpty()){
+            if(root != null){
+                System.out.print(root.data+",");
+                stack.push(root);
+                root = root.leftNode;
+            }else{
+                root = stack.pop();
+                root = root.rightNode;
+            }
         }
     }
+
+    public static void inorderTraversalUsingIterative(Node node){
+        Stack<Node> stack = new Stack<>();
+        while(node!=null||!stack.isEmpty()){
+            if(node != null){
+                stack.push(node);
+                node = node.leftNode;
+            }else{
+                node = stack.pop();
+                System.out.print(node.data+",");
+                node = node.rightNode;
+            }
+        }
+
+    }
+
+
+    public static void postOrderTraversalUsingIterative(Node node){
+        Stack<Node> stack = new Stack<>();
+        while(node!=null||!stack.isEmpty()){
+            if(node != null){
+                stack.push(node);
+                node = node.leftNode;
+            }else{
+                node = stack.peek();
+                node = node.rightNode;
+            }
+        }
+    }
+
 }
 
