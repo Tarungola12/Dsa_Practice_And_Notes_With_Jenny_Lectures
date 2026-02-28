@@ -2,7 +2,7 @@ package Arrays;
 
 public class Lec9_Binary_Search_LeetCode_Question {
     public static void main(String[] args) {
-        // Binary and linear seach in 2d array and lower and upperbound in 2d array
+//         See mam pdf for question practice in these above two lecture mam question are there :
 
         // Linear Search
         int[][] arr = { { 1, 2, 3 }, { 4, 5, 6 }, { 7, 8, 9 } };

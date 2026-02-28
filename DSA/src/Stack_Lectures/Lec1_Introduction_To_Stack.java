@@ -2,7 +2,7 @@ package Stack_Lectures;
 
 import java.util.Stack;
 
-public class Stack1 {
+public class Lec1_Introduction_To_Stack {
 
     public static void main(String[] args) {
         // System.out.println("hi");

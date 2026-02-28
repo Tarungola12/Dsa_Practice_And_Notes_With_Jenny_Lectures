@@ -7,7 +7,7 @@ public class Lec8_Binary_Search_LeetCode_Question{
 }
 class Solution {
     public static int[] searchRange(int[] nums, int target) {
-        // Binary Seaach leet code question
+        // Binary Seaach leet code question no:35 and 34 in this lecture
         int high = (nums.length - 1), low = 0, mid = 0, low2 = 0, high2 = (nums.length - 1), mid2 = 0;
         int arr2[] = { -1, -1 };
         if (nums.length == 0) {
