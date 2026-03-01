@@ -2,6 +2,7 @@ package Queue_Lectures;// Queue implementation and ond pointer and two pointer i
 
 public class Lec2_Implementation_Of_Queue_Using_Arrays {
     public static void main(String[] args) {
+        System.out.println("Queue implementation of using arrays");
         // Starting of queue data structure :
 
         // 1> Implementation queue using arrays :

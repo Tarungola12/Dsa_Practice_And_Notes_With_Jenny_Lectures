@@ -1,3 +1,4 @@
+package Recursion;
 public class Lec2_Recursion_Treee {
     public static void main(String[] args) {
         // Recursion tree 

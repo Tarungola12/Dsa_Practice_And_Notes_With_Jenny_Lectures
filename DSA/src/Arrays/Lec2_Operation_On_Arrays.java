@@ -1,5 +1,5 @@
 package Arrays;
- public class Arrays2 {
+ public class Lec2_Operation_On_Arrays {
      // Traversal array
      // Insert at begninng
      // Insert at end

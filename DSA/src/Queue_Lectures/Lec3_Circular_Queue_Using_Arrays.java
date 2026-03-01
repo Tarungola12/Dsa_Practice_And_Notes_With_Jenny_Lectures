@@ -2,8 +2,7 @@ package Queue_Lectures;
 
 public class Lec3_Circular_Queue_Using_Arrays {
     public static void main(String[] args) {
-        // IN this lecture we use space and implement cirucular queue for use space
-        // efficeitly.
+        System.out.println("IN this lecture we use space and implement cirucular queue for use space");
         circularQueue obj = new circularQueue(5);
         obj.enqueue(5);
         obj.enqueue(6);

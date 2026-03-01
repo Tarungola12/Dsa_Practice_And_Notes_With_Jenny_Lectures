@@ -7,6 +7,7 @@ import java.util.Queue;
 
 public class Lec1_Introduction_To_Queue {
     public static void main(String[] args) {
+        System.out.println("Introduction to queue data structure");
         // -------> Introduction to queue data structure :
         // 1> Queue is a linear data structure and it is follow FIFO pricipal
 
