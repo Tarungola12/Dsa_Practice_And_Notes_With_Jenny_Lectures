@@ -7,6 +7,8 @@ import java.util.Stack;
 
 public class BinaryTree {
 
+    static int preOrderIndex;
+
     static Scanner sc = new Scanner(System.in);
 
     public static Node createTree() {
@@ -39,7 +41,7 @@ public class BinaryTree {
 
     public static void display(Node root, int level) {
         if (root == null) {
-            return ;
+            return;
         }
         display(root.rightNode, ++level);
         for (int i = 0; i < level; i++) {
@@ -49,63 +51,63 @@ public class BinaryTree {
         display(root.leftNode, ++level);
     }
 
-    public static void inorderTraversal(Node node){
-        if(node == null) return ;
+    public static void inorderTraversal(Node node) {
+        if (node == null) return;
         inorderTraversal(node.leftNode);
-        System.out.print(node.data+",");
+        System.out.print(node.data + " ");
         inorderTraversal(node.rightNode);
     }
 
     public static void preOrderTraversal(Node root) {
-        if(root == null) return;
-        System.out.print(root.data+",");
+        if (root == null) return;
+        System.out.print(root.data + ",");
         preOrderTraversal(root.leftNode);
         preOrderTraversal(root.rightNode);
     }
 
     public static void postOrderTraversal(Node root) {
-        if(root == null) return;
+        if (root == null) return;
         postOrderTraversal(root.leftNode);
         postOrderTraversal(root.rightNode);
-        System.out.print(root.data+",");
+        System.out.print(root.data + ",");
     }
 
     public static void levelOrderTraversal(Node node) {
 
         Queue<Node> queue = new LinkedList<>();
         queue.add(node);
-        while (!queue.isEmpty()){
+        while (!queue.isEmpty()) {
             Node newNode = queue.remove();
             System.out.println(newNode.data);
-            if(newNode.leftNode != null) queue.add(newNode.leftNode);
-            if(newNode.rightNode != null) queue.add(newNode.rightNode);
+            if (newNode.leftNode != null) queue.add(newNode.leftNode);
+            if (newNode.rightNode != null) queue.add(newNode.rightNode);
         }
 
     }
 
     public static void preOrderTraversalUsingIterative(Node root) {
         Stack<Node> stack = new Stack<>();
-        while(root!=null||!stack.isEmpty()){
-            if(root != null){
-                System.out.print(root.data+",");
+        while (root != null || !stack.isEmpty()) {
+            if (root != null) {
+                System.out.print(root.data + ",");
                 stack.push(root);
                 root = root.leftNode;
-            }else{
+            } else {
                 root = stack.pop();
                 root = root.rightNode;
             }
         }
     }
 
-    public static void inorderTraversalUsingIterative(Node node){
+    public static void inorderTraversalUsingIterative(Node node) {
         Stack<Node> stack = new Stack<>();
-        while(node!=null||!stack.isEmpty()){
-            if(node != null){
+        while (node != null || !stack.isEmpty()) {
+            if (node != null) {
                 stack.push(node);
                 node = node.leftNode;
-            }else{
+            } else {
                 node = stack.pop();
-                System.out.print(node.data+",");
+                System.out.print(node.data + ",");
                 node = node.rightNode;
             }
         }
@@ -113,17 +115,39 @@ public class BinaryTree {
     }
 
 
-    public static void postOrderTraversalUsingIterative(Node node){
+    public static void postOrderTraversalUsingIterative(Node node) {
+//        TODO : mam says we can do these using two stack see and solve it :
         Stack<Node> stack = new Stack<>();
-        while(node!=null||!stack.isEmpty()){
-            if(node != null){
+        Node lastVisitedNode = null;
+        while (node != null || !stack.isEmpty()) {
+            while (node != null) {
                 stack.push(node);
                 node = node.leftNode;
-            }else{
-                node = stack.peek();
-                node = node.rightNode;
+            }
+            Node prevNode = stack.peek();
+            if (prevNode.rightNode != null && lastVisitedNode != prevNode.rightNode) node = prevNode.rightNode;
+            else {
+                System.out.println(prevNode.data);
+                lastVisitedNode = stack.pop();
             }
         }
     }
 
+    public static Node createTreeUsingPreorderAndInorderTraversal(int[] preOrder, int[] inOrder, int preOrderIndex, int start, int end) {
+        BinaryTree.preOrderIndex = preOrderIndex;
+        if (start > end ) return null;
+        Node newNode = new Node(preOrder[preOrderIndex]);
+        int search = Search(inOrder, preOrder[preOrderIndex], start, end);
+        BinaryTree.preOrderIndex++;
+        newNode.leftNode = createTreeUsingPreorderAndInorderTraversal(preOrder, inOrder, BinaryTree.preOrderIndex, start, search - 1);
+        newNode.rightNode = createTreeUsingPreorderAndInorderTraversal(preOrder, inOrder, BinaryTree.preOrderIndex, search + 1, end);
+        return newNode;
+    }
+
+    private static int Search(int[] inOrder, int preOrderIndexValue, int start, int end) {
+        for(int i = start; i <= end;i++) {
+            if(inOrder[i] == preOrderIndexValue) return i;
+        }
+        return -1;
+    }
 }
