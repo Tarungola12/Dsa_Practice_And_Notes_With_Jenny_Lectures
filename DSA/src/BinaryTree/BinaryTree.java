@@ -7,9 +7,11 @@ import java.util.Stack;
 
 public class BinaryTree {
 
-    static int preOrderIndex;
+    private static int preOrderIndex;
+    private static int postIndex;
 
     static Scanner sc = new Scanner(System.in);
+
 
     public static Node createTree() {
         System.out.println("Enter the data : ");
@@ -69,7 +71,7 @@ public class BinaryTree {
         if (root == null) return;
         postOrderTraversal(root.leftNode);
         postOrderTraversal(root.rightNode);
-        System.out.print(root.data + ",");
+        System.out.print(root.data + " ");
     }
 
     public static void levelOrderTraversal(Node node) {
@@ -149,5 +151,28 @@ public class BinaryTree {
             if(inOrder[i] == preOrderIndexValue) return i;
         }
         return -1;
+    }
+
+
+    public static Node createTreeUsingPostOrderAndInOrderTraversal(int[] postOrder, int[] inOrder, int postIndex, int start, int end) {
+        BinaryTree.postIndex = postIndex;
+        if(start > end) return null;
+        Node root = new Node(postOrder[BinaryTree.postIndex]);
+        int search = Search(inOrder,postOrder[BinaryTree.postIndex],start,end);
+        BinaryTree.postIndex--;
+        root.rightNode = createTreeUsingPostOrderAndInOrderTraversal(postOrder,inOrder,BinaryTree.postIndex,search+1,end);
+        root.leftNode = createTreeUsingPostOrderAndInOrderTraversal(postOrder,inOrder,BinaryTree.postIndex,start,search-1);
+        return root;
+    }
+
+    public static boolean compare(Node root, Node root2) {
+        if(root == null && root2 == null) return true;
+        if(root == null || root2 == null) return false;
+        if(root.data != root2.data) return false;
+        boolean result = compare(root.leftNode,root2.leftNode);
+        if(!result) return false;
+        result = compare(root.rightNode,root2.rightNode);
+        if(!result) return false;
+        return true;
     }
 }
