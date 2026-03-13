@@ -7,6 +7,7 @@ public class Lec5_Construct_Bst_From_PreOrder {
         // take n2 way 1 and 2 but 3 way is taken only n.
         Node root = BinaryTree.createBstFromPreOrderWay2(preOrder,0,preOrder.length-1);
         Node root2 = BinaryTree.createBstFromPreOrderWay3(preOrder,0,Integer.MAX_VALUE);
+        // TODO : we can do with iteratively try out with myself.
 //        BinaryTree.printTree(root,0);
         BinaryTree.printTree(root2,0);
     }

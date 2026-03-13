@@ -1,9 +1,10 @@
 package BinarySearchTree;
 
 public class BinaryTree{
+    private static int postIndex;
     Node root = null;
     static int index;
-    
+
     public static Node createBstFromPreOrderWay2(int[] preOrder, int start, int end) {
         if(start > end) return null;
         Node root = new Node(preOrder[start]);
@@ -23,6 +24,28 @@ public class BinaryTree{
         BinaryTree.index++;
         root.left = createBstFromPreOrderWay3(preOrder,BinaryTree.index,root.data);
         root.right = createBstFromPreOrderWay3(preOrder,BinaryTree.index,upperBound);
+        return root;
+    }
+
+    public static Node createBstFromPostOrderWay3(int[] postOrder, int index, int lowerBound) {
+        BinaryTree.postIndex = index;
+        if( BinaryTree.postIndex < 0 || postOrder[BinaryTree.postIndex] < lowerBound) return null;
+        Node root = new Node(postOrder[BinaryTree.postIndex]);
+        BinaryTree.postIndex--;
+        root.right = createBstFromPostOrderWay3(postOrder,BinaryTree.postIndex,root.data);
+        root.left = createBstFromPostOrderWay3(postOrder,BinaryTree.postIndex,lowerBound);
+        return root;
+    }
+
+    public static Node createBstFromPostOrderWay2(int[] postOrder, int start, int end) {
+        if( start > end) return null;
+        Node root = new Node(postOrder[end]);
+        int i = end-1;
+        for(;i >= 0 ;i--){
+            if(postOrder[i] < root.data) break;
+        }
+        root.left = createBstFromPostOrderWay2(postOrder,start,i);
+        root.right = createBstFromPostOrderWay2(postOrder,i+1,end-1);
         return root;
     }
 
