@@ -1,6 +1,6 @@
 package HeapDataStructure;
 
-public class MaxHeap {
+public class  MaxHeap {
     int capacity;
     int [] heapArray;
     int size;
@@ -42,6 +42,7 @@ public class MaxHeap {
     public int leftChild(int i){
         return 2*i+1;
     }
+
     public int rightChild(int i){
         return 2*i+2;
     }

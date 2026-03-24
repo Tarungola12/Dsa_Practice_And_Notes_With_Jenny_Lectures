@@ -2,6 +2,7 @@ package HeapDataStructure;
 
 public class Lec4_Deletion_In_Max_Heap {
     public static void main(String[] args) {
+        // deletion in max head is simple replace first max element with the end of the array and compare all three and change position if needed then repeat the process.
         MaxHeap maxHeap = new MaxHeap(10);
         maxHeap.insert(50);
         maxHeap.insert(30);

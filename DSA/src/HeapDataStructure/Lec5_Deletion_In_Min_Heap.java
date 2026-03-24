@@ -2,6 +2,7 @@ package HeapDataStructure;
 
 public class Lec5_Deletion_In_Min_Heap {
     public static void main(String[] args) {
+        // deletion in min head is simple replace first max element with the end of the array and compare all three and change position if needed then repeat the process.
         MinHeap minHeap = new MinHeap(10);
         minHeap.insert(10);
         minHeap.insert(58);

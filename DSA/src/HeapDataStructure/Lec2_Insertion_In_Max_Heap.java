@@ -3,6 +3,7 @@ package HeapDataStructure;
 public class Lec2_Insertion_In_Max_Heap {
     public static void main(String[] args) {
         System.out.println("Insertion in max heap");
+        // what we do here is we insert at end of array and find parent and then chaneg it if needed.
         MaxHeap maxHeap = new MaxHeap(10);
 //        System.out.println(maxHeap.siftUp(50));
 //        System.out.println(maxHeap.siftUp(2));
