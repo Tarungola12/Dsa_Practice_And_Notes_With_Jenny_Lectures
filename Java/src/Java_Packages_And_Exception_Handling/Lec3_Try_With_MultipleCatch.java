@@ -2,7 +2,7 @@ package Java_Packages_And_Exception_Handling;
 
 import java.util.Scanner;
 
-public class Ehandling3 {
+public class Lec3_Try_With_MultipleCatch {
     public static void main(String[] args) {
         // try with multiple catch block
         int i=0,j=0;

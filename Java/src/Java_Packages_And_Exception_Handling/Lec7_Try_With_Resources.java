@@ -2,7 +2,7 @@ package Java_Packages_And_Exception_Handling;
 
 import java.io.*;
 
-public class Ehandling7 {
+public class Lec7_Try_With_Resources {
    public static void main(String[] args) {
 
       // 1> first we see how without try with resources what happens

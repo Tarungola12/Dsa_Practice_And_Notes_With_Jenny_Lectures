@@ -1,6 +1,6 @@
 package Java_Packages_And_Exception_Handling;
 
-public class Ehandling5 {
+public class Lec5_ThrowingAnException {
     public static void main(String[] args) {
         // throwing exception
         // checked exception are thrown by the programmer
