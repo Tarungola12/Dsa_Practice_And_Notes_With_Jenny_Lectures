@@ -49,22 +49,18 @@ public class GraphUsingHashMap {
         while (!queue.isEmpty()){
             int vertex = queue.poll();
             System.out.print(vertex + " ");
-            List<Integer> list = exploreNodes(vertex);
+            List<Integer> list = adjMap.get(vertex);
             markIfPresent(list,hashMap,queue);
         }
     }
 
     private void markIfPresent(List<Integer> list, HashMap<Integer, Boolean> hashMap, Queue<Integer> queue) {
-        for(int value : list){
-            if(hashMap.get(value) == null){
+        for (int value : list) {
+            if (hashMap.get(value) == null) {
                 queue.add(value);
-                hashMap.put(value,true);
+                hashMap.put(value, true);
             }
         }
-    }
-
-    private List<Integer> exploreNodes(int vertex) {
-        return adjMap.get(vertex);
     }
 
     public void Dfs(int startVertex) {
