@@ -9,7 +9,7 @@ public class Lec2_BinarySearch_Using_Recursion_DAC {
         System.out.println(ans);
         // now basically we are using divide and conquer technique
         // we divide and find solution
-        
+
 
     }
 
